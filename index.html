@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">SuperSnake</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script-min.js"></script>
+</head>
+
+<body>
+    <div id="warning-container">
+        <div class="warn-header">
+            <img src="./img/logo-snake.png" alt="logo" class="warn-logo-snake">
+            <h2>SuperSnake</h2>
+            <p>The ultimate mouse-controlled snake game</p>
+        </div>
+        <div class="warn-content warn-screensize" hidden>
+            <h3 class="warn-title">Screen Size Incompatible</h3>
+            <img src="./img/warn-screensize.png" alt="Warn Image" class="warn-image">
+            <p class="warn-description">Oops! The screen size is too small to play SuperSnake.</p>
+            <div class="warn-suggestions">
+                <p>Please make sure your screen size is at least 620 x 420 pixels to enjoy the game.</p>
+            </div>
+        </div>
+        <div class="warn-content warn-mobile" hidden>
+            <h3 class="warn-title">Unsupported Device</h3>
+            <img src="./img/warn-mobile.png" alt="Warn Image" class="warn-image">
+            <p class="warn-description">Sorry! SuperSnake is not supported on mobile devices</p>
+            <div class="warn-suggestions">
+                <p>Please switch to a PC or laptop with a valid screen size to play the game.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="title">
+            <img class="logo" src="./img/logo-snake.png" alt="logo" id="header-logo" onclick="openHomePage()">
+            <h2 class="game-name">SuperSnake</h2>
+        </div>
+        <!-- <p><b>Instructions:</b> </p> -->
+        <!-- <p> Move mouse cursor inside the canvas to move the snake</p>
+        <p> Snake head is colored white</p>
+        <p> Press escape to restart game</p>
+        <p> Snake cannot eat at high speed, so you have to slow down when you reach near to food</p> -->
+        <div class="score">
+            <p class="score-box clickable" onclick="showDetailedScoreBoard()">
+                <span> Score: <span id="current-score">0</span></span>
+                <span> | </span>
+                <span> Max: <span id="max-score">0</span></span>
+            </p>
+            <div class="detailed-score-box clickable" onclick="hideDetailedScoreBoard()">
+                <table>
+                    <tr>
+                        <th>Mode</th>
+                        <td>Free</td>
+                        <td>15s</td>
+                        <td>30s</td>
+                        <td>60s</td>
+                    </tr>
+                    <tr>
+                        <th>Max Score</th>
+                        <td id="max-Free"></td>
+                        <td id="max-15s"></td>
+                        <td id="max-30s"></td>
+                        <td id="max-60s"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="modes">
+            <!-- <span style="margin-right: 10px;">Mode :</span> -->
+            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">Free</span>
+            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">15s</span>
+            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">30s</span>
+            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">60s</span>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="time-bar-container">
+            <div id="time-bar" class="time-bar"></div>
+        </div>
+
+        <canvas width=600 height=400 id=myCanvas></canvas>
+
+        <div class="start-container">
+            <img src="./img/logo-snake.png" alt="Logo" class="logo-snake">
+            <button id="startBtn" class="game-btn" onclick="start()">Start Game</button>
+            <p class="welcome" id="game-welcome"></p>
+        </div>
+
+        <div class="restart-container">
+            <p class="game-over">Game Over</p>
+            <p class="reason" id="game-over-reason">Time Out</p>
+            <button id="restartBtn" class="game-btn clickable" onclick="start()">Restart Game</button>
+            <p class="tip" id="game-tip"></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="left-footer">
+        </div>
+
+        <div class="creator">
+            <span>© Superverse</span>
+            <span id="currentYear"></span>
+            <span> | </span>
+            <a href="https://raj4823.github.io/MySite/" class="clickable" target="_blank"> Raj Patel</a>
+        </div>
+
+
+        <div class="music-setting">
+            <img src="./icon/play.png" alt="Play Icon" id="play-pause-music-icon" title="Play/Pause Music">
+            <img src="./icon/music.png" alt="Music Setting" id="music-setting-icon" class="clickable"
+                title="Music Setting">
+            <div id="loader" class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="music-setting-container">
+                <label for="musicSelector">Select Music</label>
+                <select id="musicSelector" onchange="changeBackgroundMusic(this.value)">
+                    <option value="bg_Rick_Roll">Rick Roll</option>
+                    <option value="bg_MoonKnight_Arab_Track">MoonKnight - Arab Track</option>
+                    <option value="bg_GTA_SA_Theme">GTA SA Theme</option>
+                    <option value="bg_Stranger_Things_Theme">Stranger Things Theme</option>
+                </select>
+                <hr>
+                <div class="volume-adjust">
+                    <label>Adjust Volume</label>
+                    <span>Music</span> <input type="range" id="adjustMusicVolume"
+                        oninput="updateMusicVolume(this.value / 100)">
+                    <span>SFX</span> <input type="range" class="clickable" id="adjustSoundVolume"
+                        oninput="updateSoundVolume(this.value/ 100)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="foodEatSound" src="./music/foodEat.mp3" preload="auto"></audio>
+    <audio id="deathSound" src="./music/death.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="./music/click.mp3" preload="auto"></audio>
+    <audio id="timesUpSound" src="./music/timesUp.mp3" preload="auto"></audio>
+    <audio id="maxScoreSound" src="./music/maxScore.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="" loop></audio>
+
+    <!-- Copyright -->
+    <!-- "The background music used in this game includes various copyrighted songs. The song titled 'MoonKnight, Arab track', 'Stranger Things Theme Song' , 'GTA SA Theme' and 'Never Gonna Give You Up' is the copyrighted property of its respective creators. All rights for these songs belong to their respective owners. This game does not claim any ownership or association with the copyrighted material and is used purely for non-commercial and personal enjoyment." -->
+    <script src="./js/game-min.js"></script>
+</body>
+
+</html>
