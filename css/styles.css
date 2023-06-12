@@ -27,8 +27,8 @@ canvas {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 0px 40px 0px var(--bg-color);
-    background: rgb(0, 0, 0);
-    cursor: none;
+    background: rgb(0, 0, 0) !important;
+    cursor: none !important;
 }
 
 
@@ -206,7 +206,7 @@ canvas {
     text-align: center;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .game-btn {
@@ -368,13 +368,15 @@ canvas {
 #warning-container {
     display: none;
     position: fixed;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 4fr;
+    row-gap: 20px;
+    align-items: start;
+    justify-items: center;
     padding: 20px;
     background-color: #151515;
     text-align: center;
@@ -382,9 +384,8 @@ canvas {
 }
 
 .warn-header {
+    align-self: center;
     width: 90%;
-    margin-top: 10px;
-    margin-bottom: 40px;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
@@ -406,7 +407,7 @@ canvas {
 }
 
 .warn-content {
-    width: 95%;
+    width: min(95%, 500px);
     height: max-content;
     display: none;
     grid-template-rows: 20px auto auto auto;
@@ -503,6 +504,11 @@ canvas {
         font-size: 20px;
     }
 
+    .tip,
+    .welcome {
+        font-size: 15px;
+    }
+
     .score-box,
     .detailed-score-box {
         font-size: 16px;
@@ -513,6 +519,7 @@ canvas {
     }
 }
 
+/* Small Screen Size */
 @media (max-width: 620px),
 (max-height: 420px) {
     :root {
@@ -523,7 +530,15 @@ canvas {
         grid-template-columns: auto;
     }
 
-    .footer .music-setting {
+    #warning-container,
+    .warn-screensize {
+        display: grid;
+    }
+
+    .warn-mobile,
+    .game-container,
+    .header,
+    .music-setting {
         display: none;
     }
 }
@@ -531,5 +546,28 @@ canvas {
 @media (max-width: 420px) {
     #warning-container {
         font-size: 14px !important;
+    }
+}
+
+/* Mobile or Touch screens */
+@media (hover: none) {
+    :root {
+        --accent-color: RED;
+    }
+
+    .footer {
+        grid-template-columns: auto;
+    }
+
+    #warning-container,
+    .warn-mobile {
+        display: grid;
+    }
+
+    .warn-screensize,
+    .game-container,
+    .header,
+    .music-setting {
+        display: none;
     }
 }
