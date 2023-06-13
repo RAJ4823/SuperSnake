@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">SuperSnake</title>
+
+    <!-- Open Graph Meta tags -->
+    <meta property="og:title" content="SuperSnake">
+    <meta property="og:site_name" content="SuperSnake">
+    <meta property="og:url" content="https://raj4823.github.io/SuperSnake/">
+    <meta property="og:description" content="The ultimate mouse-controlled snake game">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://raj4823.github.io/SuperSnake/img/logo-snake">
+    <meta property="og:image:url" content="https://raj4823.github.io/SuperSnake/img/logo-snake">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- Stylesheet and JS -->
     <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/script-min.js"></script>
 </head>
@@ -23,9 +36,9 @@
     <div id="main-container">
         <div class="header">
             <div class="title">
-                <img class="logo" src="./img/logo-snake.png" alt="logo" id="header-logo"
+                <img class="logo clickable" src="./img/logo-snake.png" alt="logo" id="header-logo"
                     onclick="openInstructionsPage()">
-                <h2 class="game-name heading" onclick="openHomePage()">SuperSnake</h2>
+                <h2 class="game-name heading clickable" onclick="openHomePage()">SuperSnake</h2>
             </div>
 
             <div class="score xl-text">

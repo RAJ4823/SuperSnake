@@ -728,17 +728,16 @@ canvas {
         grid-template-columns: auto;
     }
 
-    #warning-container,
-    .warn-screensize {
-        display: grid;
-    }
-
-
     #main-container,
     #instructions-container,
     .warn-mobile,
     .music-setting {
-        display: none;
+        display: none !important;
+    }
+    
+    #warning-container,
+    .warn-screensize {
+        display: grid !important;
     }
 }
 
@@ -752,16 +751,16 @@ canvas {
         grid-template-columns: auto;
     }
 
-    #warning-container,
-    .warn-mobile {
-        display: grid;
-    }
-
     #main-container,
     #instructions-container,
     .warn-screensize,
     .music-setting {
-        display: none;
+        display: none !important;
+    }
+
+    #warning-container,
+    .warn-mobile {
+        display: grid !important;
     }
 }
 
