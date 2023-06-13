@@ -11,106 +11,84 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./css/styles.css">
     <script src="./js/script-min.js"></script>
 </head>
 
 <body>
-    <div id="warning-container">
-        <div class="warn-header">
-            <img src="./img/logo-snake.png" alt="logo" class="warn-logo-snake">
-            <h2>SuperSnake</h2>
-            <p>The ultimate mouse-controlled snake game</p>
-        </div>
-        <div class="warn-content warn-screensize">
-            <h3 class="warn-title">Screen Size Incompatible</h3>
-            <img src="./img/warn-screensize.png" alt="Warn Image" class="warn-image">
-            <p class="warn-description">Oops! The screen size is too small to play SuperSnake.</p>
-            <div class="warn-suggestions">
-                <p>Please make sure your screen size is at least 620 x 420 pixels to enjoy the game.</p>
+    <div id="main-container">
+        <div class="header">
+            <div class="title">
+                <img class="logo" src="./img/logo-snake.png" alt="logo" id="header-logo"
+                    onclick="openInstructionsPage()">
+                <h2 class="game-name heading" onclick="openHomePage()">SuperSnake</h2>
             </div>
-        </div>
-        <div class="warn-content warn-mobile">
-            <h3 class="warn-title">Unsupported Device</h3>
-            <img src="./img/warn-mobile.png" alt="Warn Image" class="warn-image">
-            <p class="warn-description">Sorry! SuperSnake is not supported on mobile or touch screen devices</p>
-            <div class="warn-suggestions">
-                <p>Please switch to a PC or laptop with a valid screen size to play the game.</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="header">
-        <div class="title">
-            <img class="logo" src="./img/logo-snake.png" alt="logo" id="header-logo" onclick="openHomePage()">
-            <h2 class="game-name">SuperSnake</h2>
-        </div>
-        <!-- <p><b>Instructions:</b> </p> -->
-        <!-- <p> Move mouse cursor inside the canvas to move the snake</p>
-        <p> Snake head is colored white</p>
-        <p> Press escape to restart game</p>
-        <p> Snake cannot eat at high speed, so you have to slow down when you reach near to food</p> -->
-        <div class="score">
-            <p class="score-box clickable" onclick="showDetailedScoreBoard()">
-                <span> Score: <span id="current-score">0</span></span>
-                <span> | </span>
-                <span> Max: <span id="max-score">0</span></span>
-            </p>
-            <div class="detailed-score-box clickable" onclick="hideDetailedScoreBoard()">
-                <table>
-                    <tr>
-                        <th>Mode</th>
-                        <td>Free</td>
-                        <td>15s</td>
-                        <td>30s</td>
-                        <td>60s</td>
-                    </tr>
-                    <tr>
-                        <th>Max Score</th>
-                        <td id="max-Free"></td>
-                        <td id="max-15s"></td>
-                        <td id="max-30s"></td>
-                        <td id="max-60s"></td>
-                    </tr>
-                </table>
+            <div class="score xl-text">
+                <p class="score-box clickable" onclick="showDetailedScoreBoard()">
+                    <span> Score: <span id="current-score">0</span></span>
+                    <span> | </span>
+                    <span> Max: <span id="max-score">0</span></span>
+                </p>
+                <div class="detailed-score-box clickable text" onclick="hideDetailedScoreBoard()">
+                    <table>
+                        <tr>
+                            <th>Mode</th>
+                            <td>Infinite</td>
+                            <td>15s</td>
+                            <td>30s</td>
+                            <td>60s</td>
+                        </tr>
+                        <tr>
+                            <th>Max Score</th>
+                            <td id="max-Infinite"></td>
+                            <td id="max-15s"></td>
+                            <td id="max-30s"></td>
+                            <td id="max-60s"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modes">
+                <!-- <span style="margin-right: 10px;">Mode :</span> -->
+                <span class="mode-btn clickable text" onclick="changeGameMode(this.innerText)">Infinite</span>
+                <span class="mode-btn clickable text" onclick="changeGameMode(this.innerText)">15s</span>
+                <span class="mode-btn clickable text" onclick="changeGameMode(this.innerText)">30s</span>
+                <span class="mode-btn clickable text" onclick="changeGameMode(this.innerText)">60s</span>
             </div>
         </div>
 
-        <div class="modes">
-            <!-- <span style="margin-right: 10px;">Mode :</span> -->
-            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">Free</span>
-            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">15s</span>
-            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">30s</span>
-            <span class="mode-btn clickable" onclick="changeGameMode(this.innerText)">60s</span>
+        <div class="game-container">
+            <div class="time-bar-container">
+                <div id="time-bar" class="time-bar"></div>
+            </div>
+
+            <canvas width=600 height=400 id=myCanvas></canvas>
+
+            <div class="start-container">
+                <img src="./img/logo-snake.png" alt="Logo" class="logo-snake">
+                <button id="startBtn" class="game-btn clickable large-text" onclick="start()">Start Game</button>
+                <p class="welcome text" id="game-welcome"></p>
+            </div>
+
+            <div class="restart-container">
+                <p class="game-over">Game Over</p>
+                <p class="reason text" id="game-over-reason">Time Out</p>
+                <button id="restartBtn" class="game-btn clickable large-text" onclick="start()">Restart Game</button>
+                <p class="tip text" id="game-tip"></p>
+            </div>
         </div>
     </div>
-
-    <div class="game-container">
-        <div class="time-bar-container">
-            <div id="time-bar" class="time-bar"></div>
-        </div>
-
-        <canvas width=600 height=400 id=myCanvas></canvas>
-
-        <div class="start-container">
-            <img src="./img/logo-snake.png" alt="Logo" class="logo-snake">
-            <button id="startBtn" class="game-btn" onclick="start()">Start Game</button>
-            <p class="welcome" id="game-welcome"></p>
-        </div>
-
-        <div class="restart-container">
-            <p class="game-over">Game Over</p>
-            <p class="reason" id="game-over-reason">Time Out</p>
-            <button id="restartBtn" class="game-btn clickable" onclick="start()">Restart Game</button>
-            <p class="tip" id="game-tip"></p>
-        </div>
-    </div>
-
     <div class="footer">
         <div class="left-footer">
         </div>
 
-        <div class="creator">
+        <div class="creator large-text">
             <span>© Superverse</span>
             <span id="currentYear"></span>
             <span> | </span>
@@ -130,8 +108,8 @@
             </div>
 
             <div class="music-setting-container">
-                <label for="musicSelector">Select Music</label>
-                <select id="musicSelector" onchange="changeBackgroundMusic(this.value)">
+                <label for="musicSelector text">Select Music</label>
+                <select id="musicSelector" onchange="changeBackgroundMusic(this.value)" class="sub-text">
                     <option value="bg_Rick_Roll">Rick Roll</option>
                     <option value="bg_MoonKnight_Arab_Track">MoonKnight - Arab Track</option>
                     <option value="bg_GTA_SA_Theme">GTA SA Theme</option>
@@ -139,13 +117,169 @@
                 </select>
                 <hr>
                 <div class="volume-adjust">
-                    <label>Adjust Volume</label>
-                    <span>Music</span> <input type="range" id="adjustMusicVolume"
+                    <label class="text">Adjust Volume</label>
+                    <span class="sub-text">Music</span> <input type="range" id="adjustMusicVolume"
                         oninput="updateMusicVolume(this.value / 100)">
-                    <span>SFX</span> <input type="range" class="clickable" id="adjustSoundVolume"
+                    <span class="sub-text">SFX</span> <input type="range" class="clickable" id="adjustSoundVolume"
                         oninput="updateSoundVolume(this.value/ 100)">
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="warning-container">
+        <div class="warn-header logo-header">
+            <img src="./img/logo-snake.png" alt="logo" class="warn-logo-snake">
+            <h2 class="heading">SuperSnake</h2>
+            <p class="sub-text">The ultimate mouse-controlled snake game</p>
+        </div>
+        <div class="warn-content warn-screensize">
+            <h3 class="warn-title sub-heading">Screen Size Incompatible</h3>
+            <img src="./img/warn-screensize.png" alt="Warn Image" class="warn-image">
+            <p class="warn-description large-text">
+                Oops! The screen size is too small to play SuperSnake</p>
+            <p class="warn-suggestions text">
+                Please make sure your screen size is at least 620 x 420 pixels to enjoy the game
+            </p>
+        </div>
+        <div class="warn-content warn-mobile">
+            <h3 class="warn-title sub-heading">Unsupported Device</h3>
+            <img src="./img/warn-mobile.png" alt="Warn Image" class="warn-image">
+            <p class="warn-description large-text">
+                Sorry! SuperSnake is not supported on mobile or touch screen devices
+            </p>
+            <p class="warn-suggestions text">
+                Please switch to a PC or laptop with a valid screen size to play the game
+            </p>
+        </div>
+    </div>
+
+    <div id="instructions-container">
+        <div class="instructions-header">
+            <div class="logo-header">
+                <img src="./img/logo-snake.png" alt="logo" class="warn-logo-snake">
+                <h2 class="heading">SuperSnake</h2>
+                <p class="sub-text">The ultimate mouse-controlled snake game</p>
+            </div>
+            <div class="skip-instructions">
+                <button id="continue-to-game-btn" class="game-btn large-text clickable">Continue to Game</button>
+            </div>
+        </div>
+
+        <p class="title heading">Game Instructions & Features</p>
+        <div class="features">
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Game Controls</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img/feature_game_controll_1.png" alt="Feature Img" width="180px">
+                    <img src="./img/feature_game_controll_2.png" alt="Feature Img" width="180px">
+                </div>
+                <ul class="feature-content text">
+                    <li>After clicking the 'Start Game' button, your mouse cursor will transform into a snake head
+                        denoted by white box.</li>
+                    <li>Move the snake head inside the canvas area and collect circular-shaped food items to increase
+                        your score.
+                    </li>
+                    <li>Avoid colliding with the walls or your
+                        own snake's body.</li>
+                    <li>By moving your mouse with lightning speed, your snake head will glide through its body without
+                        colliding. However, be cautious as it can be tricky to navigate at such high speed.</li>
+                </ul>
+            </div>
+
+
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Game Modes</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img/feature_game_modes_1.png" alt="Feature Icon" width="300px">
+                </div>
+                <ul class="feature-content text">
+                    <li>The game offers both time-bounded and infinite modes.</li>
+                    <li>Test your speed and agility in the time-bounded modes as you strive to collect as much food
+                        as you can within the given time limit.</li>
+                    <li>In the infinite mode, enjoy endless gameplay with no time restrictions, allowing you to play
+                        at your own pace and aim for the highest score possible.</li>
+                    <li>Challenge yourself and compete with your friends in different game modes.</li>
+                </ul>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Score and Max Score</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img/feature_score_box_1.png" alt="Feature Icon" width="300px">
+                    <img src="./img/feature_score_box_2.png" alt="Feature Icon" width="400px">
+                </div>
+                <ul class="feature-content text">
+                    <li>As you collect food items, your score will increase by one for each item eaten.</li>
+                    <li>You can track your current score during gameplay using the scoreboard</li>
+                    <li>Click on the scoreboard to compare and see your highest scores across all modes.</li>
+                </ul>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Background Music and Sound Effects</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img//feature_music_sfx_1.png" alt="Feature Icon" width="200px">
+                </div>
+                <ul class="feature-content text">
+                    <li>Elevate your gaming experience by playing background music while playing the game.</li>
+                    <li>You have the flexibility to adjust the volume of both the background music and sound effects
+                        according to your preference.</li>
+                </ul>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Navigation</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img/feature_navigation_2.png" alt="Feature Icon" width="190px">
+                    <img src="./img/feature_navigation_1.png" alt="Feature Icon" width="180px">
+                </div>
+                <ul class="feature-content text">
+                    <li>Click on the 'Continue to Game' button to start playing.</li>
+                    <li>If you wish to read the instructions again, simply click on the snake logo.</li>
+                    <li>To return to the home/start game page, click on the 'SuperSnake' text in the header.</li>
+                    <li>To end the game instantly, press the ESC key. Enjoy the game and aim for a highscore!</li>
+                </ul>
+            </div>
+
+
+            <div class="feature-container">
+                <div class="feature-title sub-heading">
+                    <p>Warnings</p>
+                </div>
+                <div class="feature-img">
+                    <img src="./img/feature_warnings_1.png" alt="Feature Icon" width="180px">
+                    <img src="./img/feature_warnings_2.png" alt="Feature Icon" width="200px">
+                </div>
+                <ul class="feature-content text">
+                    <li>If your screen size is incompatible or you are using an unsupported device, you won't be able to
+                        play the game. </li>
+                    <li>Please ensure you meet the requirements.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="title heading"> Music Acknowledments</p>
+        <div class="copyright">
+            <p class="copyright-content text">
+                "The background music used in this game includes various copyrighted songs. The song titled
+                <i>'Rick Roll'</i>, <i>'MoonKnight - Arab track'</i>, <i>'Strange Things Theme'</i> and <i>'GTA SA
+                    Theme'</i> are
+                property of its respective creators. All rights for these songs belong to their respective owners. This
+                game
+                does not claim any ownership or association with the copyrighted material and is used purely for
+                non-commercial and personal enjoyment."
+            </p>
         </div>
     </div>
 
@@ -156,9 +290,7 @@
     <audio id="maxScoreSound" src="./music/maxScore.mp3" preload="auto"></audio>
     <audio id="backgroundMusic" src="" loop></audio>
 
-    <!-- Copyright -->
-    <!-- "The background music used in this game includes various copyrighted songs. The song titled 'MoonKnight, Arab track', 'Stranger Things Theme Song' , 'GTA SA Theme' and 'Never Gonna Give You Up' is the copyrighted property of its respective creators. All rights for these songs belong to their respective owners. This game does not claim any ownership or association with the copyrighted material and is used purely for non-commercial and personal enjoyment." -->
-    <script src="./js/game-min.js"></script>
+    <script src="./js/game.js"></script>
 </body>
 
 </html>

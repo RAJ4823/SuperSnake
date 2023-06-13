@@ -1,7 +1,8 @@
 :root {
-    --bg-color: rgb(255, 255, 255);
-    --success: #63fb63;
-    --danger: #fc7474;
+    --dark-color: rgb(77, 77, 77);
+    --color: rgb(255, 255, 255);
+    --success: rgb(99, 251, 99);
+    --danger: rgb(252, 116, 116);
     --accent-color: var(--success);
 }
 
@@ -10,32 +11,57 @@
     padding: 0;
     box-sizing: border-box;
     accent-color: var(--accent-color) !important;
+    font-family: 'Play', sans-serif;
 }
 
 body {
     user-select: none;
-    backdrop-filter: brightness(0.4);
-    background-color: var(--bg-color);
+    background-color: var(--dark-color);
     color: white;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow-x: hidden;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative;
 }
 
 canvas {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 0px 0px 40px 0px var(--bg-color);
+    box-shadow: 0px 0px 40px 0px var(--color);
     background: rgb(0, 0, 0) !important;
     cursor: none !important;
 }
 
+.sub-text {
+    font-size: 14px !important;
+}
+
+.text {
+    font-size: 16px !important;
+}
+
+.large-text {
+    font-size: 17px !important;
+}
+
+.xl-text {
+    font-size: 19px !important;
+}
+
+.sub-heading {
+    font-size: 19px !important;
+    font-weight: bold !important;
+}
+
+.heading {
+    font-size: 24px !important;
+    font-weight: bold !important;
+}
 
 .header {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 30% auto 30%;
     align-items: center;
     justify-items: center;
     padding: 10px 0px 15px 0px;
@@ -50,11 +76,17 @@ canvas {
 }
 
 .header .game-name {
-    font-size: 24px;
+    cursor: pointer;
+}
+
+.header .game-name:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--accent-color);
 }
 
 .header .title img {
-    filter: brightness(10) drop-shadow(0px 0px 15px var(--bg-color));
+    filter: brightness(10) drop-shadow(0px 0px 15px var(--color));
     margin: -10px 7px;
     width: 50px;
     cursor: pointer;
@@ -62,14 +94,14 @@ canvas {
 
 @keyframes beat {
     50% {
-        filter: brightness(10) drop-shadow(0px 0px 0px var(--bg-color));
+        filter: brightness(10) drop-shadow(0px 0px 0px var(--color));
     }
 }
 
 /* CENTER HEADER */
 .header .score-box,
 .detailed-score-box {
-    font-size: 20px;
+
     border: 2px solid #fff;
     box-shadow: 0px 0px 4px 0px #fff;
     border-radius: 5px;
@@ -86,7 +118,6 @@ canvas {
 
 .detailed-score-box {
     display: none;
-    font-size: 16px;
 }
 
 .detailed-score-box table {
@@ -105,8 +136,6 @@ canvas {
 
 /* RIGHT HEADER */
 .modes {
-    margin-right: 10px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,9 +155,9 @@ canvas {
 .mode-btn.active {
     font-weight: bolder;
     border: 2px solid #fff;
-    font-size: 17px;
+    letter-spacing: 0.5px;
+    font-size: 17px !important;
     box-shadow: 0px 0px 4px 0px #fff;
-    /* margin: 5px 10px; */
 }
 
 /* TIME BAR CONTROL */
@@ -195,7 +224,7 @@ canvas {
 }
 
 .restart-container .reason {
-    font-size: 16px;
+
     color: #ff8282;
     margin-bottom: 40px;
 }
@@ -204,7 +233,6 @@ canvas {
 .welcome {
     width: 70%;
     text-align: center;
-    font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 40px;
 }
@@ -214,12 +242,16 @@ canvas {
     border-radius: 5px;
     padding: 7px 14px;
     font-weight: bold;
-    font-size: 16px;
+    text-transform: uppercase;
     background-color: var(--accent-color);
     color: black;
     border: none;
     box-shadow: 0px 0px 4px 0px var(--accent-color);
     cursor: pointer;
+}
+
+.game-btn:hover {
+    letter-spacing: 1px;
 }
 
 #restartBtn {
@@ -238,11 +270,12 @@ canvas {
     justify-items: center;
     height: 60px;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .creator a {
     color: white;
+    text-underline-offset: 2px;
 }
 
 .creator a:hover {
@@ -283,10 +316,9 @@ canvas {
     height: max-content;
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 1px var(--bg-color);
+    box-shadow: 0px 0px 5px 1px var(--color);
     z-index: 100000;
     padding: 20px 15px 10px 15px;
-    font-size: 14px;
 }
 
 .music-setting-container select {
@@ -380,10 +412,10 @@ canvas {
     padding: 20px;
     background-color: #151515;
     text-align: center;
-    z-index: 10;
+    z-index: 100;
 }
 
-.warn-header {
+.logo-header {
     align-self: center;
     width: 90%;
     display: grid;
@@ -394,15 +426,17 @@ canvas {
     column-gap: 20px;
 }
 
-.warn-header img {
+.logo-header img {
     grid-row: 1/ -1;
     width: 70px;
     justify-self: end;
+}
+
+.warn-header img {
     filter: hue-rotate(239deg) saturate(5);
 }
 
-.warn-header p {
-    font-size: 14px;
+.logo-header p {
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -446,8 +480,145 @@ canvas {
     }
 }
 
+/* Instructions */
+#instructions-container {
+    display: none;
+    width: 100%;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 20px 70px 20px;
+    /* background-color: #474747; */
+}
+
+#instructions-container .title {
+    color: var(--success);
+    margin: 30px 0px;
+
+}
+
+.instructions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: sticky;
+    z-index: 10;
+    top: 0px;
+    padding: 20px;
+    background-color: rgba(16, 16, 16, 0.98);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.instructions-header .logo-header {
+    width: 55%;
+}
+
+.instructions-header .skip-instructions {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instructions-header .game-btn {
+    width: fit-content;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    50% {
+        box-shadow: 0px 0px 15px white;
+    }
+}
+
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 20px;
+    padding: 0px 10px;
+}
+
+.feature-container {
+    width: min(95%, 550px);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    row-gap: 10px;
+    text-align: center;
+    border: 2px solid var(--success);
+    box-shadow: 0px 0px 5px 0px var(--success);
+    background-color: rgba(119, 255, 119, 0.05);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.feature-title {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--success);
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+.feature-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-img img {
+    margin: 10px;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.feature-content {
+    margin: 10px 10px 10px 20px;
+    text-align: justify;
+}
+
+.copyright {
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: min(90%, 700px);
+}
+
+.copyright-content {
+    color: rgb(242, 242, 242);
+    padding-bottom: 40px;
+}
+
+.copyright-content i {
+    color: var(--success);
+}
+
+.feature-content li {
+    margin: 7px 0px;
+}
+
 /* Responsiveness */
-@media (max-width: 880px) {
+@media (max-width: 1050px) {
+    .header .title {
+        justify-self: start;
+        margin-left: 20px;
+    }
+
+    .header .modes {
+        justify-self: end;
+    }
+}
+
+@media (max-width: 1000px) {
     .header {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 80px 40px;
@@ -467,31 +638,41 @@ canvas {
 
     .header .modes {
         grid-column: 1/ -1;
+        width: 100%;
     }
 
     .music-setting {
         margin-right: 20px;
     }
-
-    .header .game-name {
-        font-size: 22px;
-    }
-
-    .score-box,
-    .detailed-score-box {
-        font-size: 18px;
-    }
-
-    .mode-btn {
-        font-size: 15px;
-    }
-
-    .mode-btn.active {
-        font-size: 16px;
-    }
 }
 
 @media (max-width: 720px) {
+    .sub-text {
+        font-size: 13px !important;
+    }
+
+    .text {
+        font-size: 15px !important;
+    }
+
+    .large-text {
+        font-size: 16px !important;
+    }
+
+    .xl-text {
+        font-size: 17px !important;
+    }
+
+    .sub-heading {
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+
+    .heading {
+        font-size: 22px !important;
+        font-weight: bold !important;
+    }
+
     .header .title {
         margin-left: 10px;
     }
@@ -500,22 +681,13 @@ canvas {
         margin-right: 20px;
     }
 
-    .header .game-name {
-        font-size: 20px;
-    }
-
-    .tip,
-    .welcome {
-        font-size: 15px;
-    }
-
-    .score-box,
-    .detailed-score-box {
-        font-size: 16px;
-    }
 
     .music-setting {
         margin-right: 10px;
+    }
+
+    .mode-btn.active {
+        font-size: 16px !important;
     }
 }
 
@@ -523,7 +695,33 @@ canvas {
 @media (max-width: 620px),
 (max-height: 420px) {
     :root {
-        --accent-color: RED;
+        --accent-color: RED !important;
+    }
+
+    .sub-text {
+        font-size: 13px !important;
+    }
+
+    .text {
+        font-size: 14px !important;
+    }
+
+    .large-text {
+        font-size: 15px !important;
+    }
+
+    .xl-text {
+        font-size: 16px !important;
+    }
+
+    .sub-heading {
+        font-size: 17px !important;
+        font-weight: bold !important;
+    }
+
+    .heading {
+        font-size: 20px !important;
+        font-weight: bold !important;
     }
 
     .footer {
@@ -535,24 +733,19 @@ canvas {
         display: grid;
     }
 
+
+    #main-container,
+    #instructions-container,
     .warn-mobile,
-    .game-container,
-    .header,
     .music-setting {
         display: none;
-    }
-}
-
-@media (max-width: 420px) {
-    #warning-container {
-        font-size: 14px !important;
     }
 }
 
 /* Mobile or Touch screens */
 @media (hover: none) {
     :root {
-        --accent-color: RED;
+        --accent-color: RED !important;
     }
 
     .footer {
@@ -564,10 +757,56 @@ canvas {
         display: grid;
     }
 
+    #main-container,
+    #instructions-container,
     .warn-screensize,
-    .game-container,
-    .header,
     .music-setting {
         display: none;
     }
+}
+
+@media (max-width: 320px) {
+    .sub-text {
+        font-size: 12px !important;
+    }
+
+    .text {
+        font-size: 13px !important;
+    }
+
+    .large-text {
+        font-size: 14px !important;
+    }
+
+    .xl-text {
+        font-size: 15px !important;
+    }
+
+    .sub-heading {
+        font-size: 16px !important;
+        font-weight: bold !important;
+    }
+
+    .heading {
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+    background-color: #151515;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: white;
 }
