@@ -1,6 +1,14 @@
 {
-  "name": "SuperSnake - The ultimate mouse-controlled snake game",
+  "name": "SuperSnake: free online snake game",
   "short_name": "SuperSnake",
+  "description": "Steer the snake with your mouse, the arrow keys or an on-screen joystick. Eat dots, grow longer and beat your best score.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0F1522",
+  "background_color": "#0F1522",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
       "src": "./icon/android-chrome-192x192.png",
@@ -12,8 +20,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
