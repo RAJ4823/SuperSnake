@@ -1,0 +1,18 @@
+# SuperSnake
+
+> SuperSnake is a free browser snake game at https://supersnake.iamraj.dev/. There is no grid and no fixed speed: the snake's head goes exactly where the player points. It works on computers, phones and tablets with nothing to install and no sign-up. Made by Raj Patel under the Superverse brand (https://iamraj.dev/superverse/).
+
+## How it plays
+
+- Eat the coloured dots: each one is worth one point and adds one segment to the tail, in the dot's colour.
+- The game ends when the head touches an edge of the board or the snake's own body, or when the clock runs out.
+- Controls: mouse or touchpad (the head follows the pointer), arrow keys or W/A/S/D, and an on-screen joystick on touch screens (a small push moves slowly, a full push fast, letting go stops the snake). Esc or the End button ends a game early.
+- Modes: Infinite (no clock), 15 seconds, 30 seconds and 60 seconds. Each mode keeps its own best score, saved in the browser on that device.
+- Optional background music (four tracks) with separate music and sound effect volume.
+
+## Links
+
+- [Play SuperSnake](https://supersnake.iamraj.dev/): the game, how to play, controls, modes, tips and FAQ on one page
+- [Source code](https://github.com/RAJ4823/SuperSnake)
+- [SuperChess](https://superchess.iamraj.dev/): online chess by the same maker, also [on Android](https://play.google.com/store/apps/details?id=com.superchess)
+- [Pass and Play Games](https://passandplaygames.com/): free board, dice and party games for 2+ people on one device, by the same maker
