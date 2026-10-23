@@ -283,6 +283,12 @@ canvas {
     text-underline-offset: 3px;
 }
 
+/* SUPERVERSE in the accent colour, as the other Superverse sites show it in theirs */
+.creator a.superverse {
+    color: var(--accent-color);
+    letter-spacing: 0.05em;
+}
+
 /* MUSIC CONTROL */
 .music-setting {
     justify-self: end;
